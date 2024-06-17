@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Función plantilla para manejar diferentes tipos de datos
+template<class T> void procesarNumero(T numero) {
+    if constexpr (is_integral_v<T>) {  // Usando _v para simplificar la verificación del tipo
+        // Si el número es entero
+        cout << "El número es entero: " << numero << endl;
+    } else {
+        // Si el número no es entero
+        cout << "El número no es entero. Su raíz cuadrada es: " << sqrt(numero) << endl;
+    }
+}
+
+int main() {
+    int numEntero = 16;
+    double numNoEntero = 25.5;
+
+    procesarNumero(numEntero);       // Debería imprimir: El número es entero: 16
+    procesarNumero(numNoEntero);     // Debería imprimir: El número no es entero. Su raíz cuadrada es: 5.04975
+
+    return 0;
+}
